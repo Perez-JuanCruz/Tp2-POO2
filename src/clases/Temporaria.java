@@ -30,7 +30,7 @@ public class Temporaria extends Empleado {
 	
 	@Override
 	public int getSueldoBruto() {
-		return super.getSueldoBasico() + this.horasExtras();
+		return super.getSueldoBruto() + this.horasExtras();
 	}
 	
 	private int supera50() {
