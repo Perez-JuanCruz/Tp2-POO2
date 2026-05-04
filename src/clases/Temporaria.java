@@ -41,11 +41,13 @@ public class Temporaria extends Empleado {
 		}
 	}
 	
-	private double obraSocial() {
+	@Override
+	protected double obraSocial() {
 		return 0.1 * this.getSueldoBruto() + this.supera50();
 	}
 	
-	private double aportesJubilatorios() {
+	@Override
+	protected double aportesJubilatorios() {
 		return this.getSueldoBruto() * 0.1 + 5 * this.getCantHorasExtra();
 	}
 	

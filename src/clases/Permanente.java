@@ -32,6 +32,16 @@ public class Permanente extends Empleado{
 		}
 	}
 	
+	@Override
+	protected double obraSocial() {
+		return this.getSueldoBruto() * 0.10 + 20 * this.getCantHijos();
+	}
+	
+	@Override
+	protected double aportesJubilatorios() {
+		return this.getSueldoBruto() * 0.15;
+	}
+	
 	private int asignacionXHijo() {
 		return 150 * this.getCantHijos();
 	}
@@ -51,7 +61,7 @@ public class Permanente extends Empleado{
 	
 	@Override
 	public double getRetenciones() {
-		return (this.getSueldoBruto() * 0.10 + 20 * this.getCantHijos()) + (this.getSueldoBruto() * 0.15);
+		return this.obraSocial() + this.aportesJubilatorios();
 	}
 	
 	@Override
@@ -59,8 +69,8 @@ public class Permanente extends Empleado{
 	    List<String> desglose = new ArrayList<>();
 	    desglose.add("Sueldo Básico: $" + this.getSueldoBasico());
 	    desglose.add("Salario Familiar (Hijos, Cónyuge, Antigüedad): $" + this.getSueldoFamiliar()); 
-	    desglose.add("Obra Social: -$" + (this.getSueldoBruto() * 0.10 + 20 * this.getCantHijos()));
-	    desglose.add("Aportes Jubilatorios: -$" + (this.getSueldoBruto() * 0.15));
+	    desglose.add("Obra Social: -$" + this.obraSocial());
+	    desglose.add("Aportes Jubilatorios: -$" + this.aportesJubilatorios());
 	    
 	    return desglose;
 	}

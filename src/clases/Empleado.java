@@ -58,5 +58,9 @@ public abstract class Empleado {
 		return this.getSueldoBruto() - this.getRetenciones();
 	}
 	
+	protected abstract double obraSocial();
+	
+	protected abstract double aportesJubilatorios();
+	
 	public abstract List<String> getDesglose();
 }
